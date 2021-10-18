@@ -6,20 +6,24 @@
 // 80-89 = B
 // 90 - 100 = A
 
-const array = [70,70,80];
+const array = [80,85,80];
 
 console.log(mediaDoAluno(array));
 
 function mediaDoAluno(notas) {
-    let soma = 0;
-    for (let nota of notas) {
-        soma += nota;
-    }
-    const media = soma/(notas.length);
+    const media = calcularMedia(notas);
 
-    if (media < 59) return 'F';
-    if (media < 69) return 'D';
-    if (media < 79) return 'C';
-    if (media < 89) return 'B';
-    return 'A'
+    if (media < 59) return 'failed! your note is F';
+    if (media < 69) return 'failed! your note is D';
+    if (media < 79) return 'approved! your note is C, study more';
+    if (media < 89) return 'approved! your note is B';
+    return 'approved! your note is A'
+}
+
+function calcularMedia(array) {
+    let soma = 0;
+    for (let valor of array) {
+        soma += valor;
+    }
+    return soma/(array.length);
 }
